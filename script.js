@@ -43,8 +43,8 @@ function calculateAreaOfCircle(r, selector) {
 function showCookieDialog() {
     if (getCookie("minDigit")) {
         var savedMinDigit = getCookie("minDigit");
-        var userChoice = confirm("You have data:" +
-            "min digit - " + savedMinDigit + "Save it?");
+        var userChoice = confirm("You have data: " +
+            "min digit - " + savedMinDigit + " Save it?");
 
         if (userChoice) {
             alert("Data saved in cookies. Please, reload the page.");
@@ -99,4 +99,96 @@ function deleteCookie(name) {
 
 //////////////////////////////////////////////////////////////////////////
 
+const textBlock6 = document.getElementById('text-block-6');
+
+const savedColor = localStorage.getItem('textBlock6Color');
+if (savedColor) {
+    textBlock6.style.color = savedColor;
+}
+
+textBlock6.addEventListener('select', function() {
+    const userColor = prompt('Enter color (like "red" or "#ff0000"): ');
+    if (userColor) {
+        textBlock6.style.color = userColor;
+        localStorage.setItem('textBlock6Color', userColor);
+    }
+});
+
+//////////////////////////////////////////////////////////////////////////
+
+document.querySelectorAll('.table-create').forEach(block => {
+    block.addEventListener('mouseenter', function() {
+        const form = block.querySelector('.form-container');
+        form.style.display = 'block';
+    });
+
+    block.addEventListener('mouseleave', function() {
+        const form = block.querySelector('.form-container');
+        form.style.display = 'none';
+    });
+});
+
+function createTable(blockNumber) {
+    const cellsInput = document.getElementById(`cells${blockNumber}`).value;
+    
+    const cells = parseInt(cellsInput, 10);
+    const rows = cells % 2 == 0 ? 2 : 1;
+
+    if (isNaN(rows) || isNaN(cells) || rows <= 0 || cells <= 0) {
+        alert("Please enter valid number of rows and cells.");
+        return;
+    }
+
+    const table = document.createElement('table');
+    table.style.width = '100%';
+    table.style.borderCollapse = 'collapse';
+
+    for (let i = 0; i < rows; i++) {
+        const tr = document.createElement('tr');
+        for (let j = 0; j < cells / rows; j++) {
+            const td = document.createElement('td');
+            td.style.border = '1px solid black';
+            td.style.padding = '10px';
+            td.textContent = `Cell ${(j + 1)} in row`;
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+
+    const block = document.getElementById(`img-${blockNumber}`);
+    const tableContainer = block.querySelector('.table-container');
+    if (!tableContainer) {
+        const newTableContainer = document.createElement('div');
+        newTableContainer.classList.add('table-container');
+        block.appendChild(newTableContainer);
+    }
+    block.querySelector('.table-container').appendChild(table);
+
+    const tableData = {
+        rows: rows,
+        cells: cells,
+        tableHTML: table.outerHTML
+    };
+
+    localStorage.setItem('tableBlock${blockNumber}', JSON.stringify(tableData));
+}
+
+window.onload = function() {
+    document.querySelectorAll('.block').forEach(block => {
+        const blockNumber = block.id.replace('img', '');
+        const savedTableData = localStorage.getItem(`tableBlock${blockNumber}`);
+        
+        if (savedTableData) {
+            const data = JSON.parse(savedTableData);
+            const tableContainer = block.querySelector('.table-container');
+            const table = document.createElement('table');
+            table.innerHTML = data.tableHTML;
+            tableContainer.appendChild(table);
+        }
+    });
+};
+
+window.onbeforeunload = function() {
+    localStorage.clear();
+};
 
