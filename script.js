@@ -48,10 +48,10 @@ function showCookieDialog() {
 
         if (userChoice) {
             alert("Data saved in cookies. Please, reload the page.");
-            document.getElementById('number-input').style.display = 'none';
+            document.getElementById('number-form').style.display = 'none';
         } else {
             deleteCookie("minDigit");
-            document.getElementById('number-input').style.display = 'block';
+            document.getElementById('number-form').style.display = 'block';
             location.reload();
         }
     }
@@ -116,7 +116,7 @@ textBlock6.addEventListener('select', function() {
 
 //////////////////////////////////////////////////////////////////////////
 
-document.querySelectorAll('.table-create').forEach(block => {
+document.querySelectorAll('.img-table-create').forEach(block => {
     block.addEventListener('mouseenter', function() {
         const form = block.querySelector('.form-container');
         form.style.display = 'block';
@@ -134,8 +134,8 @@ function createTable(blockNumber) {
     const cells = parseInt(cellsInput, 10);
     const rows = cells % 2 == 0 ? 2 : 1;
 
-    if (isNaN(rows) || isNaN(cells) || rows <= 0 || cells <= 0) {
-        alert("Please enter valid number of rows and cells.");
+    if (isNaN(rows) || isNaN(cells) || cells <= 0) {
+        alert("Please enter valid number of cells.");
         return;
     }
 
@@ -170,11 +170,11 @@ function createTable(blockNumber) {
         tableHTML: table.outerHTML
     };
 
-    localStorage.setItem('tableBlock${blockNumber}', JSON.stringify(tableData));
+    localStorage.setItem(`tableBlock${blockNumber}`, JSON.stringify(tableData));
 }
 
 window.onload = function() {
-    document.querySelectorAll('.block').forEach(block => {
+    document.querySelectorAll('.table-create').forEach(block => {
         const blockNumber = block.id.replace('img', '');
         const savedTableData = localStorage.getItem(`tableBlock${blockNumber}`);
         
