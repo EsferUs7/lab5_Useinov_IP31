@@ -47,16 +47,13 @@ function showCookieDialog() {
             "min digit - " + savedMinDigit + " Save it?");
 
         if (userChoice) {
-            alert("Data saved in cookies. Please, reload the page.");
+            alert("Data saved in cookies. Reload the page if you want to enter the next number");
             document.getElementById('number-form').style.display = 'none';
         } else {
             deleteCookie("minDigit");
             document.getElementById('number-form').style.display = 'block';
             location.reload();
         }
-    }
-    else {
-        console.log("Hello, World!");
     }
 }
 
@@ -106,7 +103,7 @@ if (savedColor) {
     textBlock6.style.color = savedColor;
 }
 
-textBlock6.addEventListener('select', function() {
+textBlock6.addEventListener('select', function(event) {
     const userColor = prompt('Enter color (like "red" or "#ff0000"): ');
     if (userColor) {
         textBlock6.style.color = userColor;
@@ -116,7 +113,7 @@ textBlock6.addEventListener('select', function() {
 
 //////////////////////////////////////////////////////////////////////////
 
-document.querySelectorAll('.img-table-create').forEach(block => {
+document.querySelectorAll('.table-create').forEach(block => {
     block.addEventListener('mouseenter', function() {
         const form = block.querySelector('.form-container');
         form.style.display = 'block';
