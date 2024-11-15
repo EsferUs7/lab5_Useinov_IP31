@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    swapContent('.nav', '.right-info-bar');
+    swapContent('.nav', '.right-info-bar-text');
 
     let radius = 1;
     calculateAreaOfCircle(radius, '.left-info-bar')
@@ -58,7 +58,6 @@ function showCookieDialog() {
 }
 
 function findMinDigit() {
-    console.log("Hello, World!");
     var input = document.getElementById('number-input').value;
     if (!input || input < 0) {
         alert("Please, enter int value.");
@@ -103,7 +102,7 @@ if (savedColor) {
     textBlock6.style.color = savedColor;
 }
 
-textBlock6.addEventListener('select', function(event) {
+textBlock6.addEventListener('select', function (event) {
     const userColor = prompt('Enter color (like "red" or "#ff0000"): ');
     if (userColor) {
         textBlock6.style.color = userColor;
@@ -114,12 +113,12 @@ textBlock6.addEventListener('select', function(event) {
 //////////////////////////////////////////////////////////////////////////
 
 document.querySelectorAll('.table-create').forEach(block => {
-    block.addEventListener('mouseenter', function() {
+    block.addEventListener('mouseenter', function () {
         const form = block.querySelector('.form-container');
         form.style.display = 'block';
     });
 
-    block.addEventListener('mouseleave', function() {
+    block.addEventListener('mouseleave', function () {
         const form = block.querySelector('.form-container');
         form.style.display = 'none';
     });
@@ -127,7 +126,7 @@ document.querySelectorAll('.table-create').forEach(block => {
 
 function createTable(blockNumber) {
     const cellsInput = document.getElementById(`cells${blockNumber}`).value;
-    
+
     const cells = parseInt(cellsInput, 10);
     const rows = cells % 2 == 0 ? 2 : 1;
 
@@ -170,11 +169,11 @@ function createTable(blockNumber) {
     localStorage.setItem(`tableBlock${blockNumber}`, JSON.stringify(tableData));
 }
 
-window.onload = function() {
+window.onload = function () {
     document.querySelectorAll('.table-create').forEach(block => {
         const blockNumber = block.id.replace('img', '');
         const savedTableData = localStorage.getItem(`tableBlock${blockNumber}`);
-        
+
         if (savedTableData) {
             const data = JSON.parse(savedTableData);
             const tableContainer = block.querySelector('.table-container');
@@ -185,7 +184,7 @@ window.onload = function() {
     });
 };
 
-window.onbeforeunload = function() {
+window.onbeforeunload = function () {
     localStorage.clear();
 };
 
