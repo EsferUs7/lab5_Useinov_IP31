@@ -81,6 +81,10 @@ h2, h3, h4, h5, h6 {
     padding: 10px;
 }
 
+input {
+    width: 70%;
+}
+
 .left-part {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
@@ -133,10 +137,6 @@ h2, h3, h4, h5, h6 {
     grid-column: 3 / 4;
     background-color: rgb(202, 255, 234, 0.6);
     opacity: 0.8;
-}
-
-.right-info-bar > ul {
-    padding: 0 30px;
 }
 
 .footer {

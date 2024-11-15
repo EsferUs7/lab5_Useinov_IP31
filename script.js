@@ -9,7 +9,6 @@ window.addEventListener("load", function () {
     showCookieDialog();
 });
 
-
 //////////////////////////////////////////////////////////////////////////
 
 function swapContent(selector1, selector2) {
@@ -185,6 +184,6 @@ window.onload = function () {
 };
 
 window.onbeforeunload = function () {
-    localStorage.clear();
+    localStorage.removeItem("tableBlock1");
+    localStorage.removeItem("tableBlock2");
 };
-
