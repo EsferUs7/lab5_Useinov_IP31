@@ -21,9 +21,13 @@
             </nav>
         </header>
 
-        <div class="left-part">
+        <div class="left-part table-create" id="img-1">
             <h4>Header. Block-2</h4>
-            <img src="img\spring-icon.png" alt="spring icon" class="image-left-part">
+            <img src="img\spring-icon.png" alt="spring icon" class="image-left-part img-table-create">
+            <div id="form1" class="form-container" style="display: none">
+                <input type="number" id="cells1" placeholder="Number of cells" min="1">
+                <button onclick="createTable(1)">Create Table</button>
+            </div>
             <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit consectetur eligendi incidunt
                 aliquam saepe quo aperiam. Aut molestiae incidunt nisi vitae hic ad atque esse laboriosam! Officiis,
                 at. Excepturi, odit! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit consectetur
@@ -55,14 +59,18 @@
 
         <div class="right-part">
             <div class="right-grid-container">
-                <div class="right-part-header">
+                <div class="right-part-header table-create" id="img-2">
                     <h4>Header. Block-4</h4>
                     <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam in neque, odio architecto,
                         porro cupiditate voluptate suscipit dignissimos accusamus maxime libero, pariatur officia
                         voluptatibus
                         reiciendis similique nemo consequuntur dolor quisquam!</p>
                     <img src="img\four-seasons-park.png" alt="a park with trees; of all four seasons"
-                        class="image-right-part-header" usemap="#seasons">
+                        class="image-right-part-header img-table-create" usemap="#seasons">
+                    <div id="form2" class="form-container">
+                        <input type="number" id="cells2" placeholder="Number of cells" min="1">
+                        <button onclick="createTable(2)">Create Table</button>
+                    </div>
                 </div>
 
                 <div class="left-info-bar">
@@ -77,20 +85,17 @@
                         <li>Lorem 4</li>
                         <li>Lorem 5</li>
                     </ol>
+                    <form id="number-form">
+                        <label for="number-input">Enter int value:</label>
+                        <input type="number" id="number-input" min="0" required>
+                        <button type="button" onclick="findMinDigit()">Find min digit</button>
+                    </form>
                 </div>
 
                 <div class="right-info-bar">
                     <h4>Header. Block-6</h4>
-                    <ul>
-                        <li>Monday</li>
-                        <li>Tuesday</li>
-                        <li>Wednesday</li>
-                        <li>Thursday</li>
-                        <li>Friday</li>
-                        <li>Saturday</li>
-                        <li>Sunday</li>
-                    </ul>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p class="right-info-bar-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <input id="text-block-6" type="text" placeholder="Введіть текст тут...">
                 </div>
             </div>
         </div>
@@ -105,6 +110,7 @@
             </div>
         </footer>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>

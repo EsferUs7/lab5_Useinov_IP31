@@ -254,7 +254,7 @@ input {
     }
 }
 
-@media (max-width: 401px) {
+@media (max-width: 421px) {
     body {
         background-color: #FFFFFF;
         font-family: cursive;
